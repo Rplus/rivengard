@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rivengard Heros list</title>
+
+	<style>
+
+		#el_form {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 2;
+			background-color: #0009;
+			backdrop-filter: blur(3px);
+			padding: 1em;
+
+			.filter-toggle {
+				text-align: center;
+				outline: none;
+			}
+		}
+
+		#el_filters {
+			line-height: 1;
+			font-size: smaller;
+			flex-wrap: wrap;
+			margin-top: 1em;
+			gap: 1em;
+			display: grid;
+			grid-template-columns: repeat(9, 1fr);
+
+			@media (max-width: 1024px) {
+				grid-template-columns: repeat(5, 1fr);
+			}
+			@media (max-width: 660px) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+
+			dd {
+				margin: 0 0 .25em;
+			}
+
+			input[type="checkbox"] {
+				font-size: smaller;
+				width: 1em;
+				height: 1em;
+			}
+
+			fieldset {
+				position: relative;
+				margin: 0;
+			}
+
+			legend {
+				text-transform: capitalize;
+			}
+
+			summary {
+				position: absolute;
+				top: -1em;
+				left: 0;
+				width: 100%;
+				cursor: pointer;
+				color: #990;
+			}
+		}
+
+		.filter-label {
+			align-items: center;
+		}
+
+		#el_list {
+			display: grid;
+			grid-template-columns: repeat(13, 1fr);
+			padding: 1em;
+			margin-bottom: max(30vh, 20em);
+
+			@media (max-width: 1024px) {
+				grid-template-columns: repeat(10, 1fr);
+			}
+			@media (max-width: 860px) {
+				grid-template-columns: repeat(5, 1fr);
+			}
+			@media (max-width: 480px) {
+				grid-template-columns: repeat(3, 1fr);
+
+				.head,
+				.item {
+					& > div:first-child {
+						grid-column: 1 / span 3;
+					}
+				}
+			}
+		}
+
+		.head {
+			position: sticky;
+			top: 0;
+			order: -10000000000;
+			background-color: rgba(var(--bgc), .75);
+			background-color: #666c;
+			text-transform: uppercase;
+			font-size: small;
+			font-weight: 900;
+			backdrop-filter: blur(1px);
+		}
+
+		.head,
+		.item {
+			display: grid;
+			grid-column: 1 / -1;
+			grid-template-columns: subgrid;
+
+			@media (max-width: 1024px) {
+				& > div:nth-child(n + 11) {
+					display: none;
+				}
+			}
+
+			& > div {
+				/* max-width: 100px; */
+				padding: 0.5em 0.25em;
+				text-align: center;
+				border-bottom: 1px dotted #fff3;
+				border-right: 1px dotted #fff3;
+				place-content: center;
+
+				&[data-name] {
+					text-align: start;
+				}
+			}
+		}
+
+		.item .label {
+			display: none;
+		}
+
+		.value {
+			white-space: pre-wrap;
+			place-content: center;
+			text-align: center;
+			line-height: 1;
+
+			a {
+				text-decoration: unset;
+				display: block;
+			}
+		}
+
+		div[data-affinity] .value::before {
+			content: '◼ ';
+			color: var(--color);
+			font-size: 1.5rem;
+			filter: drop-shadow(2px 4px 6px);
+			text-shadow: -.5rem -.5rem;
+			z-index: -1;
+			position: relative;
+		}
+		div[data-affinity="Light"] { --color: #ff0; }
+		div[data-affinity="Red"] { --color: #f00; }
+		div[data-affinity="Dark"] { --color: #000; }
+		div[data-affinity="Blue"] { --color: #66f; }
+		div[data-affinity="Green"] { --color: #0a0; }
+
+		.flex {
+			display: flex;
+		}
+
+		body {
+			margin: 0;
+			background-color: rgb(var(--bgc));
+			color: rgb(var(--main-color));
+			overflow-y: scroll;
+		}
+
+		:root {
+			--bgc: 51, 51, 51;
+			--main-color: 238, 238, 238;
+			color-scheme: dark;
+			font-family: sans-serif;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		hr {
+			border: 1px dashed;
+			border-width: 0px;
+			border-top-width: 1px;
+			opacity: 0.25;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div id="app">
+
+		<form id="el_form">
+			<details open>
+				<summary class="filter-toggle">Filters</summary>
+				<div>
+					<!--
+					<div class="flex" style="gap: .25em">
+						<input type="search" name="query" id="el_query">
+						<input type="reset" id="el_reset">
+					</div>
+					-->
+
+					<ul id="el_filters">
+					</ul>
+				</div>
+			</details>
+			<style id="el_filter_style"></style>
+		</form>
+
+		<ul id="el_list"></ul>
+	</div>
+
+	<script src="./heros.js"></script>
+	<script>
+		// init
+		// init
+		// init
+		let props = [
+			'name',
+			'rarity',
+			'affinity',
+			'class',
+			'faction',
+			'traits',
+			'damage_type',
+			'armor_type',
+			'range',
+			'movement',
+			'health',
+			'damage',
+			'armor',
+		];
+
+		let filter_props = [
+			'rarity',
+			'affinity',
+			'class',
+			'damage_type',
+			'armor_type',
+			'range',
+			'movement',
+			'faction',
+			'traits',
+		];
+
+		// init order number
+		// const WEIGHT = 70000; // for all unicode char
+		const WEIGHT = 100; // for [a-z0-9 ,.']
+		heros.forEach(hero => {
+			hero.order = {};
+			props.map((prop, index) => {
+				let order_target = hero[prop];
+				hero.order[prop] = order_target;
+				if (Array.isArray(order_target)) {
+					order_target = order_target[0];
+				}
+				if (index < 8) { // words
+					hero.order[prop] = [...String(order_target || '')
+						.slice(0, 3)
+						.padStart(3, '0')
+						.toUpperCase()
+					]
+					.reverse()
+					.reduce(
+						(sum, str, index) => sum + str.codePointAt(0) * WEIGHT ** index
+						, 0
+					)
+				}
+			});
+		});
+
+		let filter_cates = heros.reduce((all, hero) => {
+			filter_props.forEach(prop => {
+				if (!all[prop]) {
+					all[prop] = [];
+				}
+				all[prop].push(hero[prop]);
+			});
+			return all;
+		}, {});
+
+		for (let cate in filter_cates) {
+			if (cate === 'traits') {
+				filter_cates[cate] = [...new Set(filter_cates[cate].flat())].sort();
+			} else {
+				filter_cates[cate] = [...new Set(filter_cates[cate])].sort();
+			}
+		}
+		console.log(123, filter_cates);
+
+		let filter_html = ``;
+		for (let cate in filter_cates) {
+			let dd = filter_cates[cate].map(i => `
+				<dd>
+					<label class="filter-label flex">
+						<input type="checkbox" name="${cate}" value="${i}" id="filter-${cate}_${i}">
+						${i}
+					</label>
+				</dd>
+			`).join('');
+
+			filter_html += `<fieldset>
+				<legend>${cate}</legend>
+				<details ${filter_cates[cate].length < 6 ? 'open' : ''}>
+					<summary></summary>
+					<div>
+						${dd}
+					</div>
+				</details>
+			</fieldset>`;
+		}
+
+		el_filters.innerHTML = filter_html;
+
+		el_list.innerHTML =
+			(
+				'<li id="el_head" class="head" data-dir="-1">' + props.map((p, index) => `<div data-index="${index}">
+					<span class="label">${p}</span>
+				</div>`).join('') + '</li><style id="el_head_style"></style>'
+			) +
+			heros.map(hero => {
+				// let query = props.map(p => hero[p]).join();
+				let _props = props.map(p => ` data-${p}="${hero[p]}"`).join('');
+				let orders_style = props.map(p => `--order-${p}: ${hero.order[p]};`).join(' ');
+				return (
+					`<li class="item" ${_props} style="${orders_style}">`
+					+ props.map(p => `<div data-${p}="${hero[p]}">
+							<div class="label">${p}:</div>
+							<div class="value">${Array.isArray(hero[p]) ? hero[p].join(',\n') : (
+								p === 'name' ? '<img src="./imgs/' + hero.img + '"><a href="' + hero.link + '" target="_blank">' + hero[p] + '</a>' : hero[p]
+								)}</div>
+						</div>`).join('')
+					// + `<div data-query="${query}"></div>`
+					+ '</li>'
+				);
+			}).join('');
+
+		// binding:
+		// binding:
+		// binding:
+
+		el_form.addEventListener('input', fn_form_update);
+		el_form.addEventListener('reset', fn_update_style);
+
+		function fn_form_update() {
+			let formData = new FormData(el_form);
+
+			if (![...formData.entries()].length) {
+				fn_update_style();
+				return;
+			}
+
+			let pairs = {};
+			for (const [key, value] of formData.entries()) {
+				if (pairs.hasOwnProperty(key)) {
+			    pairs[key].push(value);
+				} else {
+				  pairs[key] = [value];
+				}
+			}
+
+			let selectors = [];
+			for (let prop in pairs) {
+				let sp_selector = (prop === 'traits') ? '*' : '';
+				selectors.push(
+					`.item:not(`+ pairs[prop].map(v => `[data-${prop}${sp_selector}="${v}"]`).join(',') +`)`
+				)
+			}
+
+			let _style = selectors.join(',') + `{ display: none; }`;
+
+			fn_update_style(_style);
+		}
+
+		function fn_update_style(style = '') {
+			el_filter_style.innerHTML = style || '';
+		}
+
+		el_head.addEventListener('click', (e) => {
+			let dir = +(el_head.dataset.dir) || 1;
+			let index = e.target.closest('div')?.dataset.index;
+			if (!index) {
+				el_head_style.innerHTML = '';
+				return;
+			}
+			index = +index;
+			el_head.dataset.dir = dir * -1;
+
+			el_head_style.innerHTML = `li.item { order: calc(var(--order-${props[index]}, 0) * ${dir * -1}); }`;
+		});
+	</script>
+</body>
+</html>
