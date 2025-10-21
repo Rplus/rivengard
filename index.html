@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rivengard Heros list</title>
+	<title>Heros list | Rivengard</title>
 
 	<style>
 
@@ -21,6 +21,12 @@
 				text-align: center;
 				outline: none;
 			}
+		}
+
+		#el_reset {
+			position: absolute;
+			top: 1em;
+			left: 1.5em;
 		}
 
 		#el_filters {
@@ -52,6 +58,10 @@
 			fieldset {
 				position: relative;
 				margin: 0;
+
+				&:last-of-type details > div {
+					columns: 2;
+				}
 			}
 
 			legend {
@@ -216,6 +226,7 @@
 						<input type="reset" id="el_reset">
 					</div>
 					-->
+					<input type="reset" id="el_reset">
 
 					<ul id="el_filters">
 					</ul>
@@ -344,7 +355,7 @@
 					+ props.map(p => `<div data-${p}="${hero[p]}">
 							<div class="label">${p}:</div>
 							<div class="value">${Array.isArray(hero[p]) ? hero[p].join(',\n') : (
-								p === 'name' ? '<img src="./imgs/' + hero.img + '"><a href="' + hero.link + '" target="_blank">' + hero[p] + '</a>' : hero[p]
+								p === 'name' ? '<a href="' + hero.link + '" target="_blank"><img src="./imgs/' + hero.img + '"><br/>' + hero[p] + '</a>' : hero[p]
 								)}</div>
 						</div>`).join('')
 					// + `<div data-query="${query}"></div>`
