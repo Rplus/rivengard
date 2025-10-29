@@ -355,7 +355,7 @@
 					+ props.map(p => `<div data-${p}="${hero[p]}">
 							<div class="label">${p}:</div>
 							<div class="value">${Array.isArray(hero[p]) ? hero[p].join(',\n') : (
-								p === 'name' ? '<a href="' + hero.link + '" target="_blank"><img src="./imgs/' + hero.img + '"><br/>' + hero[p] + '</a>' : hero[p]
+								p === 'name' ? '<a href="' + hero.link + '" target="_blank"><img src="./imgs/' + hero.img + '" width="64" height="64"><br/>' + hero[p] + '</a>' : hero[p]
 								)}</div>
 						</div>`).join('')
 					// + `<div data-query="${query}"></div>`
