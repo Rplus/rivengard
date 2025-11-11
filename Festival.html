@@ -41,11 +41,292 @@
     background-color: #ff09;
   }
 
+  span[data-lang="en"] {
+    font-size: smaller;
+    opacity: 0.3;
+    display: none;
+    color: #fff;
+
+    table:has(#show-en:checked) & {
+      display: block;
+    }
+  }
+
+  td:has(label) {
+    position: relative;
+    width: 3em;
+  }
+  td label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #fff1;
+    }
+
+    &:has(input:checked) {
+      background-color: #fff2;
+    }
+
+    & input[type="radio"] {
+      display: none;
+    }
+  }
+
   small {
+    display: block;
     opacity: 0.7;
     color: #ff0;
   }
 </style>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><label><input type="checkbox" id="show-en"> show EN</label></th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+  </tbody>
+</table>
+
+
+<script>
+  const data = [
+    [ // 1
+      {
+        "en": "Win 2 lightning victories",
+        "zh": "贏得 2 場閃電勝利"
+      },
+      {
+        "en": "Kill 5 enemies with melee attacks",
+        "zh": "使用近戰攻擊殺死 5 名敵人"
+      }
+    ],
+    [ // 2
+      {
+        "en": "Raid 5 Campaign battles",
+        "zh": "突襲 5 戰役"
+      },
+      {
+        "en": "Kill 10 units with heroes from the Festival Hero's class",
+        "zh": "使用節日英雄軍種的英雄殺死 10 個單位"
+      }
+    ],
+    [ // 3
+      {
+        "en": "Win 20 Campaign battles",
+        "zh": "贏得 20 場戰役"
+      },
+      {
+        "en": "Use abilities from the Festival Hero's class 30 times",
+        "zh": "使用節日英雄軍種的技能 30 次"
+      }
+    ],
+    [ // 4
+      {
+        "en": "Defeat 50 enemies with ranged attacks",
+        "zh": "使用遠程攻擊擊敗 50 名敵人"
+      },
+      {
+        "en": "Play 20 Hero Arena battles",
+        "zh": "進行 20 場英雄競技場戰鬥",
+        "note": "5票 => 6.25小時 => 75體",
+        mark: true,
+      },
+    ],
+    [ // 5
+      {
+        "en": "Deal 10000 Damage using Abilities",
+        "zh": "使用技能造成 10000 點傷害"
+      },
+      {
+        "en": "Win 100 Campaign battles",
+        "zh": "贏得 100 場戰役",
+        mark: true,
+      }
+    ],
+    [ // 6
+      {
+        "en": "Defeat 50 enemies with Green units",
+        "zh": "使用綠色單位擊敗 50 名敵人"
+      },
+      {
+        "en": "Defeat 50 Blue units",
+        "zh": "擊敗 50 個藍色單位",
+        "note": "2-55 x3 / E2-35 x1"
+      }
+    ],
+    [ // 7
+      {
+        "en": "Use 40 abilities with Green units",
+        "zh": "使用綠色單位 40 次技能"
+      },
+      {
+        "en": "Play 3 Treasure Beach battles",
+        "zh": "進行 3 場寶藏海灘戰鬥",
+        mark: true,
+      }
+    ],
+    [ // 8
+      {
+        "en": "Play 2 Guild Raid battles",
+        "zh": "進行 2 次公會突襲戰鬥",
+        mark: true,
+      },
+      {
+        "en": "Deal 15000 physical or magical (dependent on Festival Hero) damage to enemies during battle",
+        "zh": "在戰鬥中對敵人造成 15000 點物理或魔法傷害（取決於節日英雄）"
+      }
+    ],
+    [ // 9
+      {
+        "en": "Heal 5000 health (includes healing tiles)",
+        "zh": "治癒 5000 點生命值（包括治療磚）"
+      },
+      {
+        "en": "Deal 10000 damage using Green units",
+        "zh": "使用綠色單位造成 10,000 點傷害",
+        "note": "E2-35"
+      }
+    ],
+    [ // 10
+      {
+        "en": "Use abilities 25 times with Blue units",
+        "zh": "使用藍色單位的技能 25 次"
+      },
+      {
+        "en": "Play 20 Hero Arena battles",
+        "zh": "進行 20 場英雄競技場戰鬥",
+        mark: true,
+      }
+    ],
+    [ // 11
+      {
+        "en": "Win 25 lightning victories",
+        "zh": "贏得 25 場閃電勝利"
+      },
+      {
+        "en": "Defeat 100 units with heroes sharing the Festival's Hero affinity/color",
+        "zh": "使用與節日英雄親和力/顏色相同的英雄擊敗 100 名單位"
+      }
+    ],
+    [ // 12
+      {
+        "en": "Deal 2000 ability damage with Dark units",
+        "zh": "使用黑暗單位造成 2000 點技能傷害"
+      },
+      {
+        "en": "Play 1 Onslaught battle",
+        "zh": "進行 1 場猛攻戰鬥"
+      }
+    ],
+    [ // 13
+      {
+        "en": "Defeat 100 Light units",
+        "zh": "擊敗 100 個光系單位"
+      },
+      {
+        "en": "Defeat 100 units with heroes from the Festival Hero's class",
+        "zh": "使用節日英雄等級軍種的英雄擊敗 100 個單位",
+        "note": "3-30"
+      }
+    ],
+    [ // 14
+      {
+        "en": "Win 25 battles using an all-green Hero lineup",
+        "zh": "使用全綠色英雄陣容贏得 25 場戰鬥"
+      },
+      {
+        "en": "Deal 30000 damage to enemies in battle",
+        "zh": "在戰鬥中對敵人造成 30000 點傷害"
+      }
+    ],
+    [ // 15
+      {
+        "en": "Use abilities 150 with heroes from the Festival Hero's class",
+        "zh": "使用節日英雄軍種的英雄技能 150 次"
+      },
+      {
+        "en": "Play 20 Hero Arena battles",
+        "zh": "進行 20 場英雄競技場戰鬥",
+        mark: true,
+      }
+    ],
+    [ // 16
+      {
+        "en": "Deal 10000 damage with units sharing the Festival Hero's color",
+        "zh": "使用與節日英雄顏色相同的單位造成 10,000 點傷害"
+      },
+      {
+        "en": "Raid 25 Campaign battles",
+        "zh": "突襲 25 場戰役"
+      }
+    ],
+    [ // 17
+      {
+        "en": "Win 20 battles with the Festival Hero deployed and surviving the battle",
+        "zh": "部署節日英雄並存活，贏得 20 場戰鬥"
+      },
+      {
+        "en": "Deal 50000 damage with heroes from the Festival Hero's class",
+        "zh": "使用節日英雄軍種的英雄造成 50,000 點傷害"
+      }
+    ],
+    [ // 18
+      {
+        "en": "Use abilities 25 times with the Festival Hero",
+        "zh": "使用節日英雄的技能 25 次"
+      },
+      {
+        "en": "Defeat 10 units sharing the Festival Hero's affinity/color",
+        "zh": "擊敗 10 個與節日英雄有相同親和力/顏色的單位"
+      }
+    ],
+    [ // 19
+      {
+        "en": "Defeat 75 enemies with the Festival Hero",
+        "zh": "使用節日英雄擊敗 75 名敵人"
+      },
+      {
+        "en": "Play 75 Campaign battles",
+        "zh": "參加 75 場戰役"
+      }
+    ],
+    [ // 20
+      {
+        "en": "Deal 50000 Damage with the Festival Hero",
+        "zh": "使用節日英雄造成 50000 點傷害"
+      },
+      {
+        "en": "Win 250 Campaign battles",
+        "zh": "贏得 250 場戰役"
+      }
+    ]
+  ];
+
+  tbody.innerHTML = data.map((i, index) => {
+    let ctx = i.map(ii => `<li>
+        ${ii.mark ? '<mark>' : ''}
+          <span data-lang="zh">${ii.zh}</span>
+          <span data-lang="en">${ii.en}</span>
+        ${ii.mark ? '</mark>' : ''}
+        ${ii.note ? '<small>※ ' + ii.note + '</small>' : ''}
+      </li>`).join('');
+    return `<tr>
+    <td><label><input type="radio" name="iii">${index + 1}</label></td>
+    <td><ul>${ctx}</ul></td></tr>`;
+  }).join('');
+
+</script>
+
+<!--
 <details open>
   <table class="mw-collapsible fandom-table wikitable mw-made-collapsible">
     <tbody>
@@ -110,7 +391,11 @@
         <td>
           <ul>
             <li>使用技能造成 10000 點傷害 </li>
-            <li>贏得 100 場戰役 </li>
+            <li>
+              <mark>
+                贏得 100 場戰役
+              </mark>
+            </li>
           </ul>
         </td>
       </tr>
@@ -543,3 +828,5 @@
     </tbody>
   </table>
 </details>
+-->
+
