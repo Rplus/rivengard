@@ -1,5 +1,14 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Festival | Rivengard</title>
 <style>
+  :root {
+    scrollbar-color: #fff1 #fff1;
+    /* thumb 顏色 + track 顏色 */
+    scrollbar-width: thin;
+    /* 可選值：auto | thin | none */
+    scrollbar-gutter: stable;
+  }
   body {
     /* font-family: monospace; */
     background-color: #333;
@@ -73,7 +82,11 @@
     }
 
     & input[type="radio"] {
-      display: none;
+      /* display: none; */
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
     }
   }
 
