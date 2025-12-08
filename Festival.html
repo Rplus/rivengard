@@ -60,34 +60,35 @@
       display: block;
     }
   }
-
-  td:has(label) {
+  .anchor {
+    position: fixed;
+    top: 0;
+  }
+  td:has(a) {
     position: relative;
     width: 3em;
-  }
-  td label {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
 
     &:hover {
       background-color: #fff1;
     }
-
-    &:has(input:checked) {
-      background-color: #fff2;
+    &:has(.anchor:target) {
+      background-color: #fff3;
     }
+  }
+  td a {
+    position: absolute;
+    inset: 0;
+    color: inherit;
+    background-color: #3003;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    text-decoration: none;
+    scroll-margin-block-start: 40px;
+  }
 
-    & input[type="radio"] {
-      /* display: none; */
-      position: absolute;
-      width: 0;
-      height: 0;
-      overflow: hidden;
-    }
+  ul {
+    margin-bottom: .5em;
   }
 
   small {
@@ -333,7 +334,7 @@
         ${ii.note ? '<small>※ ' + ii.note + '</small>' : ''}
       </li>`).join('');
     return `<tr>
-    <td><label><input type="radio" name="iii">${index + 1}</label></td>
+    <td><a href="#id${index + 1}">${index + 1}</a><span class="anchor" id="id${index + 1}"></span></td>
     <td><ul>${ctx}</ul></td></tr>`;
   }).join('');
 
