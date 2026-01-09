@@ -160,6 +160,20 @@
 			}
 		}
 
+		.trait-box {
+			display: inline-flex;
+			align-items: center;
+			padding: 2px .5em;
+			margin: 0.2em 0;
+
+			&:hover {
+				background-color: #fff3;
+			}
+
+			&::before { content: '['; padding-inline-end: 2px; }
+			&::after { content: ']'; padding-inline-start: 2px; }
+		}
+
 		div[data-affinity] .value::before {
 			content: '◼ ';
 			color: var(--color);
@@ -271,6 +285,40 @@
 			'traits',
 		];
 
+		const all_traits = {
+	    "Affinity Weakness": "Enemies of opposite affinities/colors deal ×2 damage against the unit's armor and have ×2 crit and block chances against the unit.",
+	    "Amphibious": "Can pass Water tiles but not end their move on them.",
+	    "Bushkin": "Deals +20% attack damage when standing in Shrubs.",
+	    "Burned by Light": "Takes 50% of max Health as damage at the start of each of its turns when not in Darkness, and takes ×2 damage from Light units.",
+	    "Burrow": "Moves underground, ignoring obstacles and units.",
+	    "Dragon Scales": "Armor completely regenerates at the beginning of its turn.",
+	    "Eager": "Moves one tile towards the nearest enemy at the start of its turn, if not adjacent to an enemy.",
+	    "Elemental": "Gets healed by 25% of initial health at the beginning of the turn when standing on a tile of matching affinity/color, and ignores its negative effects.",
+	    "Erratic": "Targets a random enemy in range when attacking.",
+	    "Fatal Landing": "Damages and displaces units when landing (units that cannot be displaced die)",
+	    "Fear of Death": "Moves to an adjacent tile, trying to move as far as possible from the damage source, after taking damage.",
+	    "Flying": "Can traverse impassable tiles and enemies and move between any elevation.",
+	    "Healer": "Can heal a friendly unit as its action.  Heal amount is Healer's damage.",
+	    "Hulking": "Cannot be displaced or devoured.  Must stop its movement immediately after going to higher elevation (relative with start position).",
+	    "Immune": "Immune to all tile and unit effects",
+	    "Inebriated": "Deals and receives +10% damage for each round after the first.",
+	    "Life Bond": "Any damage dealt is also immediately dealt to the unit that originally summoned it",
+	    "Looter": "Adds 10% Gold to the battle rewards for each enemy defeated in an adjacent tile (excluding Summons and Objects) if hero survives.",
+	    "Magic Resistance": "Takes 20% less magical damage",
+	    "Mechanic": "Can Repair a friendly unit as its action.  Health and Armor repaired is Mechanic's damage.",
+	    "Mechanical": "Cannot be healed, but can be repaired. Repair also increases Armor by the same amount.",
+	    "Mounted": "Movement not blocked by special tiles (e.g. Thorns or Broken Ice).",
+	    "Night Vision": "Have no negative effects from Darkness and deal +50% damage against enemies in Darkness.",
+	    "Object": "Automatically takes its action, if any at the beginning of the turn. Cannot be Healed. A player loses the battle if their only remaining units are Objects.",
+	    "Polearm": "Deals 50% more damage against Mounted units.  Enemies entering an adjacent tile must stop.",
+	    "Ranged": "When adjacent to an enemy, range is reduced to 1 and damage is reduced by 50%.",
+	    "Shadewalker": "When starting their turn in Darkness, can move to any other Tile on the board with Darkness.",
+	    "Steppable": "Can be stepped on",
+	    "Sturdy": "Takes 75% less damage from ranged units' normal attack.",
+	    "Summon": "Moves and attacks automatically at the beginning of its turn.",
+	    "Terrifying": "Takes 40% less melee damage"
+		};
+
 		// init order number
 		// const WEIGHT = 70000; // for all unicode char
 		const WEIGHT = 100; // for [a-z0-9 ,.']
@@ -352,16 +400,27 @@
 				let orders_style = props.map(p => `--order-${p}: ${hero.order[p]};`).join(' ');
 				return (
 					`<li class="item" ${_props} style="${orders_style}">`
-					+ props.map(p => `<div data-${p}="${hero[p]}">
-							<div class="label">${p}:</div>
-							<div class="value">${Array.isArray(hero[p]) ? hero[p].join(',\n') : (
-								p === 'name' ? '<a href="' + hero.link + '" target="_blank"><img src="./imgs/' + hero.img + '" width="64" height="64"><br/>' + hero[p] + '</a>' : hero[p]
-								)}</div>
-						</div>`).join('')
-					// + `<div data-query="${query}"></div>`
+					+ props.map(p => gen_td(hero, p)).join('')
 					+ '</li>'
 				);
 			}).join('');
+
+		function gen_td(hero, p) {
+			let ctx = hero[p];
+
+			if (p === 'name') {
+				ctx = `<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"><br/>${hero[p]}</a>`;
+			} else if (p === 'traits') {
+				ctx = hero[p].map(i => `<span class="trait-box" title="${all_traits[i] || ''}">${i}</span>`).join('<br>');
+			}
+
+			return (
+				`<div data-${p}="${hero[p]}">
+						<div class="label">${p}:</div>
+						<div class="value">${ctx}</div>
+					</div>`
+			);
+		}
 
 		// binding:
 		// binding:
