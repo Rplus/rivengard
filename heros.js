@@ -836,8 +836,7 @@ window.heros = [
         "class": "Warrior",
         "faction": "Walled Kingdoms",
         "traits": [
-            "Mounted",
-            "Eager"
+            "Mounted"
         ],
         "damage_type": "Physical",
         "armor_type": "Physical",
