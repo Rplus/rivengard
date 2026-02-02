@@ -36,15 +36,12 @@
 			margin-top: 1em;
 			gap: 1em;
 			display: grid;
-			grid-template-columns: repeat(12, 1fr);
+			grid-template-columns: repeat(8, 1fr);
 
 			@media (max-width: 1200px) {
-				grid-template-columns: repeat(6, 1fr);
+				grid-template-columns: repeat(4, 1fr);
 			}
 			@media (max-width: 660px) {
-				grid-template-columns: repeat(3, 1fr);
-			}
-			@media (max-width: 400px) {
 				grid-template-columns: repeat(2, 1fr);
 				font-size: small;
 			}
@@ -63,8 +60,12 @@
 				position: relative;
 				margin: 0;
 
-				&:last-of-type details > div {
+				/* &:last-of-type details > div {
 					columns: 2;
+				} */
+
+				fieldset + fieldset {
+					margin-top: .5em;
 				}
 			}
 
@@ -79,6 +80,10 @@
 				width: 100%;
 				cursor: pointer;
 				color: #990;
+			}
+
+			details[data-cate="traits"] div {
+				columns: 2;
 			}
 		}
 
@@ -320,6 +325,39 @@
 			'traits',
 		];
 
+		let filter_rendering_grounp = [
+			'rarity',
+			'affinity',
+			'class',
+			{
+				title: 'type',
+				items: [
+					'damage_type',
+					'armor_type',
+				],
+				open: true,
+			},
+			{
+				title: 'grid',
+				items: [
+					'range',
+					'movement',
+				],
+				open: true,
+			},
+			{
+				title: 'slot',
+				items: [
+					'slot1',
+					'slot2',
+					'slot3',
+				],
+				open: false,
+			},
+			'faction',
+			'traits',
+		];
+
 		const all_traits = {
 	    "Affinity Weakness": "Enemies of opposite affinities/colors deal ×2 damage against the unit's armor and have ×2 crit and block chances against the unit.",
 	    "Amphibious": "Can pass Water tiles but not end their move on them.",
@@ -401,7 +439,8 @@
 		console.log(123, filter_cates);
 
 		let filter_html = ``;
-		for (let cate in filter_cates) {
+
+		function gen_checkboxs(cate) {
 			let dd = filter_cates[cate].map(i => `
 				<dd>
 					<label class="filter-label flex">
@@ -411,15 +450,30 @@
 				</dd>
 			`).join('');
 
-			filter_html += `<fieldset>
+			return `<fieldset>
 				<legend>${cate}</legend>
-				<details ${filter_cates[cate].length < 6 ? 'open' : ''}>
+				<details data-cate="${cate}" ${filter_cates[cate].length < 6 ? 'open' : ''}>
 					<summary></summary>
 					<div>
 						${dd}
 					</div>
 				</details>
 			</fieldset>`;
+		}
+		for (let group of filter_rendering_grounp) {
+			if (typeof group === 'string') {
+				filter_html += gen_checkboxs(group)
+			} else if (group.items) {
+				filter_html += `<fieldset>
+					<legend>${group.title}</legend>
+					<details ${group.open ? 'open' : ''}>
+						<summary></summary>
+						<div>
+							${group.items.map(gen_checkboxs).join('')}
+						</div>
+					</details>
+				</fieldset>`
+			}
 		}
 
 		el_filters.innerHTML = filter_html;
