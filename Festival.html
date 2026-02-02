@@ -55,13 +55,14 @@
     background-color: #ff09;
   }
 
-  span[data-lang="en"] {
+  span.lang-1 {
     font-size: smaller;
     opacity: 0.3;
     display: none;
     color: #fff;
+    display: none;
 
-    table:has(#show-en:checked) & {
+    table:has(#show-other-lang:checked) & {
       display: block;
     }
   }
@@ -108,7 +109,7 @@
   <thead>
     <tr>
       <th>#</th>
-      <th><label><input type="checkbox" id="show-en"> show EN</label></th>
+      <th><label><input type="checkbox" id="show-other-lang"> show other lang</label></th>
     </tr>
   </thead>
   <tbody id="tbody">
@@ -117,6 +118,10 @@
 
 
 <script>
+  let langs = ['en', 'zh'];
+  if (location.protocol !== 'https:') {
+    langs.reverse();
+  }
   const data = [
     [ // 1
       {
@@ -156,7 +161,7 @@
       {
         "en": "Play 20 Hero Arena battles",
         "zh": "進行 20 場英雄競技場戰鬥",
-        "note": "5票 => 6.25小時 => 75體",
+        "note": "5 tokens => 6.25 hr => 75 stamina",
         mark: true,
       },
     ],
@@ -333,8 +338,8 @@
   tbody.innerHTML = data.map((i, index) => {
     let ctx = i.map(ii => `<li>
         ${ii.mark ? '<mark>' : ''}
-          <span data-lang="zh">${ii.zh}</span>
-          <span data-lang="en">${ii.en}</span>
+          <span class="lang-0" data-lang="${langs[0]}">${ii[langs[0]]}</span>
+          <span class="lang-1" data-lang="${langs[1]}">${ii[langs[1]]}</span>
         ${ii.mark ? '</mark>' : ''}
         ${ii.note ? '<small>※ ' + ii.note + '</small>' : ''}
       </li>`).join('');
