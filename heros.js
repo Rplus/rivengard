@@ -17,9 +17,9 @@ window.heros = [
         "damage_basic": 16,
         "damage": 1477,
         "armor_basic": 16,
-        "armor_max": 1353,
+        "armor": 1353,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -40,9 +40,9 @@ window.heros = [
         "damage_basic": 16,
         "damage": 1648,
         "armor_basic": 25,
-        "armor_max": 2579,
+        "armor": 2579,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -63,9 +63,9 @@ window.heros = [
         "damage_basic": 17,
         "damage": 1702,
         "armor_basic": 16,
-        "armor_max": 1600,
+        "armor": 1600,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -86,9 +86,9 @@ window.heros = [
         "damage_basic": 18,
         "damage": 1852,
         "armor_basic": 15,
-        "armor_max": 1558,
+        "armor": 1558,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -109,9 +109,9 @@ window.heros = [
         "damage_basic": 12,
         "damage": 1196,
         "armor_basic": 20,
-        "armor_max": 2000,
+        "armor": 2000,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Shield"
     },
     {
@@ -132,9 +132,9 @@ window.heros = [
         "damage_basic": 10,
         "damage": 838,
         "armor_basic": 61,
-        "armor_max": 5107,
+        "armor": 5107,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -155,7 +155,7 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1308,
         "armor_basic": 35,
-        "armor_max": 3276,
+        "armor": 3276,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
@@ -178,9 +178,9 @@ window.heros = [
         "damage_basic": 13,
         "damage": 1305,
         "armor_basic": 57,
-        "armor_max": 5731,
+        "armor": 5731,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -201,9 +201,9 @@ window.heros = [
         "damage_basic": 12,
         "damage": 1321,
         "armor_basic": 13,
-        "armor_max": 1430,
+        "armor": 1430,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -224,7 +224,7 @@ window.heros = [
         "damage_basic": 16,
         "damage": 1440,
         "armor_basic": 15,
-        "armor_max": 1350,
+        "armor": 1350,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
@@ -247,9 +247,9 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1216,
         "armor_basic": 9,
-        "armor_max": 780,
+        "armor": 780,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -270,7 +270,7 @@ window.heros = [
         "damage_basic": 18,
         "damage": 1420,
         "armor_basic": 13,
-        "armor_max": 1024,
+        "armor": 1024,
         "slot1": "Weapon",
         "slot2": "Weapon",
         "slot3": "Ring"
@@ -293,9 +293,9 @@ window.heros = [
         "damage_basic": 13,
         "damage": 1289,
         "armor_basic": 18,
-        "armor_max": 1785,
+        "armor": 1785,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -316,9 +316,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1513,
         "armor_basic": 10,
-        "armor_max": 1011,
+        "armor": 1011,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -339,9 +339,9 @@ window.heros = [
         "damage_basic": 11,
         "damage": 1113,
         "armor_basic": 35,
-        "armor_max": 3542,
+        "armor": 3542,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -362,9 +362,9 @@ window.heros = [
         "damage_basic": 0,
         "damage": 1590,
         "armor_basic": 0,
-        "armor_max": 1302,
+        "armor": 1302,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -385,8 +385,8 @@ window.heros = [
         "damage_basic": 0,
         "damage": 1171,
         "armor_basic": 0,
-        "armor_max": 2448,
-        "slot1": "armor_basic",
+        "armor": 2448,
+        "slot1": "Armor",
         "slot2": "Shield",
         "slot3": "Amulet"
     },
@@ -408,9 +408,9 @@ window.heros = [
         "damage_basic": 22,
         "damage": 1299,
         "armor_basic": 42,
-        "armor_max": 1856,
+        "armor": 1856,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -431,9 +431,9 @@ window.heros = [
         "damage_basic": 18,
         "damage": 1852,
         "armor_basic": 15,
-        "armor_max": 1555,
+        "armor": 1555,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -454,7 +454,7 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1673,
         "armor_basic": 40,
-        "armor_max": 2246,
+        "armor": 2246,
         "slot1": "Weapon",
         "slot2": "Weapon",
         "slot3": "Ring"
@@ -477,9 +477,9 @@ window.heros = [
         "damage_basic": 16,
         "damage": 1523,
         "armor_basic": 0,
-        "armor_max": 940,
+        "armor": 940,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -500,9 +500,9 @@ window.heros = [
         "damage_basic": 13,
         "damage": 1299,
         "armor_basic": 0,
-        "armor_max": 1225,
+        "armor": 1225,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -523,9 +523,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1475,
         "armor_basic": 0,
-        "armor_max": 1411,
+        "armor": 1411,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -546,9 +546,9 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1449,
         "armor_basic": 0,
-        "armor_max": 1881,
+        "armor": 1881,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -569,7 +569,7 @@ window.heros = [
         "damage_basic": 10,
         "damage": 928,
         "armor_basic": 0,
-        "armor_max": 3289,
+        "armor": 3289,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
@@ -592,9 +592,9 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1161,
         "armor_basic": 11,
-        "armor_max": 908,
+        "armor": 908,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -615,9 +615,9 @@ window.heros = [
         "damage_basic": 17,
         "damage": 1337,
         "armor_basic": 20,
-        "armor_max": 1587,
+        "armor": 1587,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -638,9 +638,9 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1196,
         "armor_basic": 12,
-        "armor_max": 1020,
+        "armor": 1020,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -661,9 +661,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1168,
         "armor_basic": 10,
-        "armor_max": 780,
+        "armor": 780,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -684,7 +684,7 @@ window.heros = [
         "damage_basic": 11,
         "damage": 1145,
         "armor_basic": 46,
-        "armor_max": 4796,
+        "armor": 4796,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
@@ -707,7 +707,7 @@ window.heros = [
         "damage_basic": 13,
         "damage": 1302,
         "armor_basic": 45,
-        "armor_max": 4355,
+        "armor": 4355,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
@@ -730,9 +730,9 @@ window.heros = [
         "damage_basic": 17,
         "damage": 1680,
         "armor_basic": 22,
-        "armor_max": 2188,
+        "armor": 2188,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -753,7 +753,7 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1446,
         "armor_basic": 14,
-        "armor_max": 1440,
+        "armor": 1440,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
@@ -776,9 +776,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1475,
         "armor_basic": 18,
-        "armor_max": 1779,
+        "armor": 1779,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -799,9 +799,9 @@ window.heros = [
         "damage_basic": 12,
         "damage": 1052,
         "armor_basic": 10,
-        "armor_max": 880,
+        "armor": 880,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -822,9 +822,9 @@ window.heros = [
         "damage_basic": 12,
         "damage": 1161,
         "armor_basic": 25,
-        "armor_max": 2432,
+        "armor": 2432,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -845,9 +845,9 @@ window.heros = [
         "damage_basic": 16,
         "damage": 1545,
         "armor_basic": 16,
-        "armor_max": 1548,
+        "armor": 1548,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -868,9 +868,9 @@ window.heros = [
         "damage_basic": 9,
         "damage": 848,
         "armor_basic": 60,
-        "armor_max": 5692,
+        "armor": 5692,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -891,9 +891,9 @@ window.heros = [
         "damage_basic": 19,
         "damage": 1843,
         "armor_basic": 30,
-        "armor_max": 2889,
+        "armor": 2889,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -914,9 +914,9 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1232,
         "armor_basic": 11,
-        "armor_max": 963,
+        "armor": 963,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -937,9 +937,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1545,
         "armor_basic": 20,
-        "armor_max": 2070,
+        "armor": 2070,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -960,9 +960,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1571,
         "armor_basic": 12,
-        "armor_max": 1254,
+        "armor": 1254,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -983,9 +983,9 @@ window.heros = [
         "damage_basic": 19,
         "damage": 1564,
         "armor_basic": 10,
-        "armor_max": 822,
+        "armor": 822,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1006,9 +1006,9 @@ window.heros = [
         "damage_basic": 11,
         "damage": 1075,
         "armor_basic": 40,
-        "armor_max": 3910,
+        "armor": 3910,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1029,9 +1029,9 @@ window.heros = [
         "damage_basic": 17,
         "damage": 1574,
         "armor_basic": 21,
-        "armor_max": 1939,
+        "armor": 1939,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1052,9 +1052,9 @@ window.heros = [
         "damage_basic": 0,
         "damage": 768,
         "armor_basic": 0,
-        "armor_max": 5699,
+        "armor": 5699,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1075,7 +1075,7 @@ window.heros = [
         "damage_basic": 22,
         "damage": 1296,
         "armor_basic": 21,
-        "armor_max": 1292,
+        "armor": 1292,
         "slot1": "Weapon",
         "slot2": "Weapon",
         "slot3": "Ring"
@@ -1098,9 +1098,9 @@ window.heros = [
         "damage_basic": 19,
         "damage": 1417,
         "armor_basic": 63,
-        "armor_max": 4566,
+        "armor": 4566,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1121,9 +1121,9 @@ window.heros = [
         "damage_basic": 19,
         "damage": 1257,
         "armor_basic": 19,
-        "armor_max": 1174,
+        "armor": 1174,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1144,9 +1144,9 @@ window.heros = [
         "damage_basic": 21,
         "damage": 1571,
         "armor_basic": 16,
-        "armor_max": 1254,
+        "armor": 1254,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1167,9 +1167,9 @@ window.heros = [
         "damage_basic": 14,
         "damage": 1315,
         "armor_basic": 15,
-        "armor_max": 1408,
+        "armor": 1408,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1190,9 +1190,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1520,
         "armor_basic": 20,
-        "armor_max": 2025,
+        "armor": 2025,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1213,9 +1213,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1472,
         "armor_basic": 10,
-        "armor_max": 985,
+        "armor": 985,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1236,9 +1236,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1520,
         "armor_basic": 45,
-        "armor_max": 4576,
+        "armor": 4576,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1259,9 +1259,9 @@ window.heros = [
         "damage_basic": 10,
         "damage": 1017,
         "armor_basic": 65,
-        "armor_max": 6435,
+        "armor": 6435,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1282,7 +1282,7 @@ window.heros = [
         "damage_basic": 12,
         "damage": 988,
         "armor_basic": 33,
-        "armor_max": 2745,
+        "armor": 2745,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
@@ -1305,9 +1305,9 @@ window.heros = [
         "damage_basic": 16,
         "damage": 1283,
         "armor_basic": 9,
-        "armor_max": 723,
+        "armor": 723,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1328,9 +1328,9 @@ window.heros = [
         "damage_basic": 15,
         "damage": 1440,
         "armor_basic": 13,
-        "armor_max": 1254,
+        "armor": 1254,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1351,9 +1351,9 @@ window.heros = [
         "damage_basic": 18,
         "damage": 1689,
         "armor_basic": 22,
-        "armor_max": 2076,
+        "armor": 2076,
         "slot1": "Weapon",
-        "slot2": "armor_basic",
+        "slot2": "Armor",
         "slot3": "Ring"
     },
     {
@@ -1374,7 +1374,7 @@ window.heros = [
         "damage_basic": 11,
         "damage": 1075,
         "armor_basic": 41,
-        "armor_max": 4019,
+        "armor": 4019,
         "slot1": "Weapon",
         "slot2": "Shield",
         "slot3": "Amulet"
