@@ -18,11 +18,9 @@ window.heros = [
         "health": 30,
         "damage": 14,
         "armor": 9,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Buzzy_Klonkson",
@@ -44,11 +42,9 @@ window.heros = [
         "health": 0,
         "damage": 0,
         "armor": 0,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Contorta",
@@ -68,11 +64,9 @@ window.heros = [
         "health": 0,
         "damage": 0,
         "armor": 0,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Freneric",
@@ -93,11 +87,9 @@ window.heros = [
         "health": 0,
         "damage": 0,
         "armor": 0,
-        "items": [
-            "Mage Armor ",
-            "Shield ",
-            "Amulet "
-        ]
+        "slot1": "Armor",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Gix",
@@ -118,11 +110,9 @@ window.heros = [
         "health": 33,
         "damage": 14,
         "armor": 12,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Harun",
@@ -143,11 +133,9 @@ window.heros = [
         "health": 32,
         "damage": 15,
         "armor": 12,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Ignozio",
@@ -167,11 +155,9 @@ window.heros = [
         "health": 42,
         "damage": 22,
         "armor": 42,
-        "items": [
-            "Rogue Weapon ",
-            "Rogue Armor ",
-            "Ring "
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Katsume",
@@ -191,11 +177,9 @@ window.heros = [
         "health": 33,
         "damage": 15,
         "armor": 13,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Oakenshrub",
@@ -216,11 +200,9 @@ window.heros = [
         "health": 70,
         "damage": 9,
         "armor": 60,
-        "items": [
-            "Warrior Weapon ",
-            "Warrior Armor",
-            "Ring "
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Pendar",
@@ -240,11 +222,9 @@ window.heros = [
         "health": 30,
         "damage": 18,
         "armor": 15,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Shun",
@@ -264,11 +244,9 @@ window.heros = [
         "health": 42,
         "damage": 18,
         "armor": 22,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Silverroot",
@@ -289,11 +267,9 @@ window.heros = [
         "health": 40,
         "damage": 14,
         "armor": 11,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Snazzbang",
@@ -315,11 +291,9 @@ window.heros = [
         "health": 49,
         "damage": 22,
         "armor": 21,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Weapon",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Weapon",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Sprocket",
@@ -340,11 +314,9 @@ window.heros = [
         "health": 63,
         "damage": 19,
         "armor": 63,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Staticrackle",
@@ -366,11 +338,9 @@ window.heros = [
         "health": 51,
         "damage": 19,
         "armor": 19,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Sunshine",
@@ -392,11 +362,9 @@ window.heros = [
         "health": 35,
         "damage": 16,
         "armor": 15,
-        "items": [
-            "Rogue Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Tawa_Rinji",
@@ -417,11 +385,9 @@ window.heros = [
         "health": 33,
         "damage": 12,
         "armor": 10,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Wingtip",
@@ -442,11 +408,9 @@ window.heros = [
         "health": 44,
         "damage": 21,
         "armor": 16,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Yasamin",
@@ -468,11 +432,9 @@ window.heros = [
         "health": 55,
         "damage": 11,
         "armor": 40,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Zefa",
@@ -493,11 +455,9 @@ window.heros = [
         "health": 63,
         "damage": 12,
         "armor": 20,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Shield"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Shield"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Akio",
@@ -517,11 +477,9 @@ window.heros = [
         "health": 50,
         "damage": 12,
         "armor": 33,
-        "items": [
-            "Warrior Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Aradel",
@@ -541,11 +499,9 @@ window.heros = [
         "health": 25,
         "damage": 16,
         "armor": 16,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Ardasi",
@@ -565,11 +521,9 @@ window.heros = [
         "health": 31,
         "damage": 15,
         "armor": 20,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Balmur",
@@ -590,11 +544,9 @@ window.heros = [
         "health": 35,
         "damage": 14,
         "armor": 35,
-        "items": [
-            "Mage Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Bullmon",
@@ -615,11 +567,9 @@ window.heros = [
         "health": 40,
         "damage": 14,
         "armor": 11,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Nimrul",
@@ -639,11 +589,9 @@ window.heros = [
         "health": 40,
         "damage": 18,
         "armor": 13,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Weapon",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Weapon",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Salvo",
@@ -664,11 +612,9 @@ window.heros = [
         "health": 27,
         "damage": 12,
         "armor": 13,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Ziyad",
@@ -688,11 +634,9 @@ window.heros = [
         "health": 40,
         "damage": 17,
         "armor": 21,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Dorga",
@@ -712,11 +656,9 @@ window.heros = [
         "health": 40,
         "damage": 17,
         "armor": 20,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Grandma_Bones",
@@ -736,11 +678,9 @@ window.heros = [
         "health": 30,
         "damage": 16,
         "armor": 9,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Agnar",
@@ -760,11 +700,9 @@ window.heros = [
         "health": 63,
         "damage": 10,
         "armor": 61,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Thana_Moh",
@@ -784,11 +722,9 @@ window.heros = [
         "health": 35,
         "damage": 19,
         "armor": 10,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Timtim",
@@ -809,11 +745,9 @@ window.heros = [
         "health": 28,
         "damage": 15,
         "armor": 10,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Areus",
@@ -833,11 +767,9 @@ window.heros = [
         "health": 32,
         "damage": 16,
         "armor": 0,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Boulder",
@@ -857,11 +789,9 @@ window.heros = [
         "health": 65,
         "damage": 13,
         "armor": 45,
-        "items": [
-            "Warrior Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Caradan",
@@ -881,11 +811,9 @@ window.heros = [
         "health": 35,
         "damage": 14,
         "armor": 15,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Cinder",
@@ -906,11 +834,9 @@ window.heros = [
         "health": 57,
         "damage": 13,
         "armor": 57,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Cervidus",
@@ -931,11 +857,9 @@ window.heros = [
         "health": 45,
         "damage": 12,
         "armor": 25,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Coryn",
@@ -956,11 +880,9 @@ window.heros = [
         "health": 38,
         "damage": 16,
         "armor": 25,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Gibbo_%26_Gobbo",
@@ -980,11 +902,9 @@ window.heros = [
         "health": 44,
         "damage": 17,
         "armor": 22,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Hanna",
@@ -1005,11 +925,9 @@ window.heros = [
         "health": 40,
         "damage": 13,
         "armor": 0,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Lucente_III",
@@ -1031,11 +949,9 @@ window.heros = [
         "health": 30,
         "damage": 18,
         "armor": 15,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Lyonette",
@@ -1055,11 +971,9 @@ window.heros = [
         "health": 38,
         "damage": 15,
         "armor": 20,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Mivera",
@@ -1080,11 +994,9 @@ window.heros = [
         "health": 25,
         "damage": 15,
         "armor": 10,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Monty",
@@ -1104,11 +1016,9 @@ window.heros = [
         "health": 35,
         "damage": 15,
         "armor": 0,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Naevys",
@@ -1128,11 +1038,9 @@ window.heros = [
         "health": 40,
         "damage": 17,
         "armor": 16,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Nixie",
@@ -1154,11 +1062,9 @@ window.heros = [
         "health": 25,
         "damage": 16,
         "armor": 16,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Pari",
@@ -1178,11 +1084,9 @@ window.heros = [
         "health": 38,
         "damage": 14,
         "armor": 14,
-        "items": [
-            "Rogue Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Pelator",
@@ -1202,11 +1106,9 @@ window.heros = [
         "health": 45,
         "damage": 15,
         "armor": 45,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Ranaklu",
@@ -1228,11 +1130,9 @@ window.heros = [
         "health": 39,
         "damage": 13,
         "armor": 18,
-        "items": [
-            "Mage Weapon",
-            "Mage Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Scruffy",
@@ -1252,11 +1152,9 @@ window.heros = [
         "health": 40,
         "damage": 19,
         "armor": 30,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Sigrid",
@@ -1276,11 +1174,9 @@ window.heros = [
         "health": 50,
         "damage": 14,
         "armor": 0,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Sir_Florianus",
@@ -1300,11 +1196,9 @@ window.heros = [
         "health": 42,
         "damage": 15,
         "armor": 18,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Sir_Matteus",
@@ -1324,11 +1218,9 @@ window.heros = [
         "health": 58,
         "damage": 10,
         "armor": 0,
-        "items": [
-            "Warrior Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Taro",
@@ -1348,11 +1240,9 @@ window.heros = [
         "health": 65,
         "damage": 11,
         "armor": 41,
-        "items": [
-            "Warrior Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/The_Red_Rat",
@@ -1373,11 +1263,9 @@ window.heros = [
         "health": 65,
         "damage": 10,
         "armor": 65,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Tokon",
@@ -1398,11 +1286,9 @@ window.heros = [
         "health": 60,
         "damage": 11,
         "armor": 46,
-        "items": [
-            "Warrior Weapon",
-            "Shield",
-            "Amulet"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Shield",
+        "slot3": "Amulet"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Umanu",
@@ -1423,11 +1309,9 @@ window.heros = [
         "health": 38,
         "damage": 15,
         "armor": 10,
-        "items": [
-            "Rogue Weapon",
-            "Rogue Armor",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Vittoria",
@@ -1448,11 +1332,9 @@ window.heros = [
         "health": 50,
         "damage": 15,
         "armor": 40,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Weapon",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Weapon",
+        "slot3": "Ring"
     },
     {
         "link": "https://rivengard.fandom.com/wiki/Voyassa",
@@ -1473,10 +1355,8 @@ window.heros = [
         "health": 60,
         "damage": 11,
         "armor": 35,
-        "items": [
-            "Warrior Weapon",
-            "Warrior Armor ",
-            "Ring"
-        ]
+        "slot1": "Weapon",
+        "slot2": "Armor",
+        "slot3": "Ring"
     }
 ]

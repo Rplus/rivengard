@@ -36,10 +36,10 @@
 			margin-top: 1em;
 			gap: 1em;
 			display: grid;
-			grid-template-columns: repeat(9, 1fr);
+			grid-template-columns: repeat(12, 1fr);
 
 			@media (max-width: 1024px) {
-				grid-template-columns: repeat(5, 1fr);
+				grid-template-columns: repeat(6, 1fr);
 			}
 			@media (max-width: 660px) {
 				grid-template-columns: repeat(3, 1fr);
@@ -84,23 +84,45 @@
 
 		#el_list {
 			display: grid;
-			grid-template-columns: repeat(13, 1fr);
+			font-size: smaller;
+			grid-template-columns: repeat(14, 1fr);
 			padding: .5em 1em;
 			margin-bottom: max(30vh, 20em);
 
-			@media (max-width: 1024px) {
-				grid-template-columns: repeat(10, 1fr);
+			@media (max-width: 1200px) {
+				grid-template-columns: repeat(11, 1fr);
 			}
 			@media (max-width: 860px) {
-				grid-template-columns: repeat(5, 1fr);
-			}
-			@media (max-width: 480px) {
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: repeat(6, 1fr);
 
 				.head,
 				.item {
 					& > div:first-child {
-						grid-column: 1 / span 3;
+						grid-row: 1 / span 3;
+					}
+				}
+			}
+			@media (max-width: 540px) {
+				grid-template-columns: repeat(4, 1fr);
+
+				.head,
+				.item {
+					& > div:first-child {
+						grid-row: 1 / span 3;
+						grid-column: 1 / span 2;
+					}
+
+					& > div:nth-of-type(2),
+					& > div:nth-of-type(3) {
+						order: 1;
+						margin-bottom: 2em;
+						border-bottom-width: 3px;
+					}
+
+					& > div:nth-child(n + 10) {
+						order: 2;
+						margin-bottom: 2em;
+						border-bottom-width: 3px;
 					}
 				}
 			}
@@ -124,8 +146,8 @@
 			grid-column: 1 / -1;
 			grid-template-columns: subgrid;
 
-			@media (max-width: 1024px) {
-				& > div:nth-child(n + 11) {
+			@media (max-width: 1200px) {
+				& > div:nth-child(n + 12) {
 					display: none;
 				}
 			}
@@ -258,15 +280,20 @@
 		// init
 		// init
 		// init
+
 		let props = [
 			'name',
 			'rarity',
 			'affinity',
 			'class',
 			'faction',
-			'traits',
 			'damage_type',
 			'armor_type',
+			// 'slot1',
+			// 'slot2',
+			// 'slot3',
+			'traits',
+			'slots',
 			'range',
 			'movement',
 			'health',
@@ -280,6 +307,9 @@
 			'class',
 			'damage_type',
 			'armor_type',
+			'slot1',
+			'slot2',
+			'slot3',
 			'range',
 			'movement',
 			'faction',
@@ -397,7 +427,12 @@
 			) +
 			heros.map(hero => {
 				// let query = props.map(p => hero[p]).join();
-				let _props = props.map(p => ` data-${p}="${hero[p]}"`).join('');
+				let _props = props.map(p => {
+					if (p === 'slots') {
+						return ['slot1', 'slot2', 'slot3'].map(j => ` data-${j}="${hero[j]}"`).join('');
+					}
+					return ` data-${p}="${hero[p]}"`;
+				}).join('');
 				let orders_style = props.map(p => `--order-${p}: ${hero.order[p]};`).join(' ');
 				return (
 					`<li class="item" ${_props} style="${orders_style}">`
@@ -411,6 +446,20 @@
 
 			if (p === 'name') {
 				ctx = `<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"><br/>${hero[p]}</a>`;
+			} else if (p === 'slots') {
+				ctx = [hero.slot1, hero.slot2, hero.slot3].join('\n');
+				return `<div data-slot1="${hero.slot1}" data-slot2="${hero.slot2}" data-slot3="${hero.slot3}">
+					<div class="label">${p}:</div>
+					<div class="value">${ctx}</div>
+				</div>`;
+			// 	ctx = [hero.slot1, hero.slot2, hero.slot3].join('\n');
+			// 	console.log(ctx);
+			// 	return
+			// 		`<div>
+			// 			<div class="label">${p}:</div>
+			// 			<div class="value">123</div>
+			// 		</div>`
+			// 	// ctx = hero[p].map(i => `<span class="trait-box" title="${all_traits[i] || ''}">${i}</span>`).join('<br>');
 			} else if (p === 'traits') {
 				ctx = hero[p].map(i => `<span class="trait-box" title="${all_traits[i] || ''}">${i}</span>`).join('<br>');
 			}
