@@ -478,8 +478,10 @@
 
 		el_filters.innerHTML = filter_html;
 
-		el_list.innerHTML =
-			(
+		el_list.innerHTML = fn_gen_list();
+
+		function fn_gen_list() {
+			return (
 				'<li id="el_head" class="head" data-dir="-1">' + props.map((p, index) => `<div data-index="${index}">
 					<span class="label">${p}</span>
 				</div>`).join('') + '</li><style id="el_head_style"></style>'
@@ -495,40 +497,41 @@
 				let orders_style = props.map(p => `--order-${p}: ${hero.order[p]};`).join(' ');
 				return (
 					`<li class="item" ${_props} style="${orders_style}">`
-					+ props.map(p => gen_td(hero, p)).join('')
+					+ props.map(p => fn_gen_td(hero, p)).join('')
 					+ '</li>'
 				);
 			}).join('');
 
-		function gen_td(hero, p) {
-			let ctx = hero[p];
+			function fn_gen_td(hero, p) {
+				let ctx = hero[p];
 
-			if (p === 'name') {
-				ctx = `<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"><br/>${hero[p]}</a>`;
-			} else if (p === 'slots') {
-				ctx = [hero.slot1, hero.slot2, hero.slot3].join('\n');
-				return `<div data-slot1="${hero.slot1}" data-slot2="${hero.slot2}" data-slot3="${hero.slot3}">
-					<div class="label">${p}:</div>
-					<div class="value">${ctx}</div>
-				</div>`;
-			// 	ctx = [hero.slot1, hero.slot2, hero.slot3].join('\n');
-			// 	console.log(ctx);
-			// 	return
-			// 		`<div>
-			// 			<div class="label">${p}:</div>
-			// 			<div class="value">123</div>
-			// 		</div>`
-			// 	// ctx = hero[p].map(i => `<span class="trait-box" title="${all_traits[i] || ''}">${i}</span>`).join('<br>');
-			} else if (p === 'traits') {
-				ctx = hero[p].map(i => `<span class="trait-box" title="${all_traits[i] || ''}">${i}</span>`).join('<br>');
-			}
-
-			return (
-				`<div data-${p}="${hero[p]}">
+				if (p === 'name') {
+					ctx = `<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"><br/>${hero[p]}</a>`;
+				} else if (p === 'slots') {
+					ctx = [hero.slot1, hero.slot2, hero.slot3].join('\n');
+					return `<div data-slot1="${hero.slot1}" data-slot2="${hero.slot2}" data-slot3="${hero.slot3}">
 						<div class="label">${p}:</div>
 						<div class="value">${ctx}</div>
-					</div>`
-			);
+					</div>`;
+				// 	ctx = [hero.slot1, hero.slot2, hero.slot3].join('\n');
+				// 	console.log(ctx);
+				// 	return
+				// 		`<div>
+				// 			<div class="label">${p}:</div>
+				// 			<div class="value">123</div>
+				// 		</div>`
+				// 	// ctx = hero[p].map(i => `<span class="trait-box" title="${all_traits[i] || ''}">${i}</span>`).join('<br>');
+				} else if (p === 'traits') {
+					ctx = hero[p].map(i => `<span class="trait-box" title="${all_traits[i] || ''}">${i}</span>`).join('<br>');
+				}
+
+				return (
+					`<div data-${p}="${hero[p]}">
+							<div class="label">${p}:</div>
+							<div class="value">${ctx}</div>
+						</div>`
+				);
+			}
 		}
 
 		// binding:
@@ -572,7 +575,7 @@
 			el_filter_style.innerHTML = style || '';
 		}
 
-		el_head.addEventListener('click', (e) => {
+		el_head?.addEventListener('click', (e) => {
 			let dir = +(el_head.dataset.dir) || 1;
 			let index = e.target.closest('div')?.dataset.index;
 			if (!index) {
