@@ -338,7 +338,7 @@
 
 	<h1>Hero List | Rivengard</h1>
 
-	<details class="el_switcher_box" open>
+	<details class="el_switcher_box">
 		<summary>-------------------------</summary>
 		<div class="flex">
 			<input type="checkbox" id="class-spliter">
@@ -526,6 +526,7 @@
 			el_list.innerHTML = fn_gen_list();
 		} else {
 			el_list.classList.add('is-grouped');
+			document.querySelector('.el_switcher_box').open = true;
 			let heros_grouped = Object.groupBy(heros, (i) => {
 				return i[us_cate];
 			});
