@@ -651,7 +651,7 @@
 				let ctx = hero[p];
 
 				if (p === 'name') {
-					ctx = `<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"><br/>${hero[p]}</a>`;
+					ctx = `<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"><br/></a>${hero[p]}`;
 				} else if (p === 'slots') {
 					ctx = [hero.slot1, hero.slot2, hero.slot3].join('\n');
 					return `<div data-slot1="${hero.slot1}" data-slot2="${hero.slot2}" data-slot3="${hero.slot3}">
