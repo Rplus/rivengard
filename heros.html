@@ -435,45 +435,7 @@
 		}
 		console.log(123, filter_cates);
 
-		let filter_html = ``;
-
-		function gen_checkboxs(cate) {
-			let dd = filter_cates[cate].map(i => `
-				<dd>
-					<label class="filter-label flex">
-						<input type="checkbox" name="${cate}" value="${i}" id="filter-${cate}_${i}">
-						${i}
-					</label>
-				</dd>
-			`).join('');
-
-			return `<fieldset>
-				<legend>${cate}</legend>
-				<details data-cate="${cate}" ${filter_cates[cate].length < 6 ? 'open' : ''}>
-					<summary></summary>
-					<div>
-						${dd}
-					</div>
-				</details>
-			</fieldset>`;
-		}
-		for (let group of filter_rendering_grounp) {
-			if (typeof group === 'string') {
-				filter_html += gen_checkboxs(group)
-			} else if (group.items) {
-				filter_html += `<fieldset>
-					<legend>${group.title}</legend>
-					<details ${group.open ? 'open' : ''}>
-						<summary></summary>
-						<div>
-							${group.items.map(gen_checkboxs).join('')}
-						</div>
-					</details>
-				</fieldset>`
-			}
-		}
-
-		el_filters.innerHTML = filter_html;
+		el_filters.innerHTML = fn_gen_filterdom();
 
 		el_list.innerHTML = fn_gen_list();
 
@@ -529,6 +491,49 @@
 						</div>`
 				);
 			}
+		}
+
+		function fn_gen_filterdom(argument) {
+			let filter_html = ``;
+
+			function fn_gen_checkboxs(cate) {
+				let dd = filter_cates[cate].map(i => `
+					<dd>
+						<label class="filter-label flex">
+							<input type="checkbox" name="${cate}" value="${i}" id="filter-${cate}_${i}">
+							${i}
+						</label>
+					</dd>
+				`).join('');
+
+				return `<fieldset>
+					<legend>${cate}</legend>
+					<details data-cate="${cate}" ${filter_cates[cate].length < 6 ? 'open' : ''}>
+						<summary></summary>
+						<div>
+							${dd}
+						</div>
+					</details>
+				</fieldset>`;
+			}
+
+			for (let group of filter_rendering_grounp) {
+				if (typeof group === 'string') {
+					filter_html += fn_gen_checkboxs(group)
+				} else if (group.items) {
+					filter_html += `<fieldset>
+						<legend>${group.title}</legend>
+						<details ${group.open ? 'open' : ''}>
+							<summary></summary>
+							<div>
+								${group.items.map(fn_gen_checkboxs).join('')}
+							</div>
+						</details>
+					</fieldset>`
+				}
+			}
+
+			return filter_html;
 		}
 
 		// binding:
