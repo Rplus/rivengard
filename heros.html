@@ -135,6 +135,41 @@
 		}
 	}
 
+	#el_list.is-grouped {
+		display: block;
+	}
+
+	.grouped-heros-cate {
+		margin-bottom: 2em;
+	}
+
+	.grouped-heros-box {
+		flex-wrap: wrap;
+	}
+
+	.grouped-hero {
+		display: block;
+		text-align: center;
+		font-size: smaller;
+		padding: .5em;
+
+		div {
+			opacity: 0.5;
+		}
+
+		&:hover {
+			background-color: #fff1;
+
+			div {
+				opacity: 1;
+			}
+		}
+
+		.grouped-hero__name {
+			max-width: 64px;
+		}
+	}
+
 	.head {
 		position: sticky;
 		top: 0;
@@ -251,11 +286,36 @@
 		border-top-width: 1px;
 		opacity: 0.25;
 	}
+	h1 {
+		text-align: center;
+		width: fit-content;
+		padding: .25em 2vw;
+		margin: 0 auto;
+	}
+	.el_switcher_box {
+		width: fit-content;
+		margin: 0 auto;
+
+		summary {
+			opacity: 0.3;
+		}
+
+		&:not([open]) {
+		}
+	}
 </style>
 </head>
 
 <body>
-<a href="./" style="color: inherit; position: absolute">./</a>
+
+	<a href="./" style="color: inherit; position: absolute">./</a>
+
+	<h1>Hero List | Rivengard</h1>
+
+	<details class="el_switcher_box" open>
+		<summary>-------------------------</summary>
+		<select id="el_switcher"></select>
+	</details>
 
 	<div id="app">
 
@@ -416,9 +476,70 @@
 			});
 		});
 
-		el_filters.innerHTML = fn_gen_filterdom();
 
-		el_list.innerHTML = fn_gen_list();
+		let us = new URLSearchParams(location.search);
+		let us_cate = ( props.includes(us.get('cate')) && us.get('cate') ) || '';
+
+		console.log(22, us_cate, heros);
+		if (!us_cate) {
+			el_list.innerHTML = fn_gen_list();
+		} else {
+			el_list.classList.add('is-grouped');
+			let heros_grouped = Object.groupBy(heros, (i) => {
+				return i[us_cate];
+			});
+			el_list.innerHTML = fn_gen_groupby(heros_grouped);
+		}
+
+		el_filters.innerHTML = fn_gen_filterdom();
+		fn_gen_switcher();
+
+		function fn_gen_switcher() {
+			el_switcher.innerHTML = `<option value="">-</option>` + props.map(prop => {
+				return `<option value="${prop}">${prop}</option>`;
+			}).join('');
+
+			el_switcher.addEventListener('change', (e) => {
+				let _cate = e.target.value;
+				console.log(e.target.value);
+				if (_cate) {
+					location.href = `?cate=${_cate}`;
+				} else {
+					location.href = './heros.html';
+				}
+			});
+		}
+
+		function fn_gen_groupby(heros_grouped) {
+			console.log(22, heros_grouped);
+			let _html = '';
+			const each_class = ['Mage', 'Rogue', 'Warrior', ]
+			let each_class_number = '';
+
+			for (let cate in heros_grouped) {
+				_html += `<div class="grouped-heros-cate" open>
+					<h3>${cate}</h3>
+					<div class="flex grouped-heros-box">
+						${
+							heros_grouped[cate].map(fn_gen_grouped_hero).join('')
+						}
+					</div>
+				</div>`;
+			}
+
+			return _html;
+
+			function fn_gen_grouped_hero(hero) {
+				return `
+					<div class="grouped-hero">
+						<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"></a>
+						<div class=grouped-hero__name>
+							${hero.name}
+						</div>
+					</div>
+				`
+			}
+		}
 
 		function fn_gen_list() {
 			return (
@@ -533,6 +654,8 @@
 				}
 			}
 
+			el_form.querySelector('& > details').open = !us_cate;
+
 			return filter_html;
 		}
 
@@ -540,9 +663,9 @@
 		// binding:
 		// binding:
 
-		el_form.addEventListener('input', fn_form_update);
-		el_form.addEventListener('reset', fn_update_style);
-		el_head?.addEventListener('click', fn_reorder_table);
+		window.el_form.addEventListener('input', fn_form_update);
+		window.el_form.addEventListener('reset', fn_update_style);
+		window.el_head?.addEventListener('click', fn_reorder_table);
 
 		function fn_form_update() {
 			let formData = new FormData(el_form);
