@@ -537,7 +537,7 @@
 		fn_gen_switcher();
 
 		function fn_gen_switcher() {
-			el_switcher.innerHTML = `<option value="">-</option>` + switcher_props.map(prop => {
+			el_switcher.innerHTML = `<option value="">= list view =</option>` + switcher_props.map(prop => {
 				return `<option value="${prop}" ${prop === us_cate ? 'selected' : ''}>${prop}</option>`;
 			}).join('');
 
