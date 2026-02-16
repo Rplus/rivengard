@@ -204,26 +204,28 @@
 
 	.head,
 	.item {
-		display: grid;
-		grid-column: 1 / -1;
-		grid-template-columns: subgrid;
+		ul:not(.is-grouped) & {
+			display: grid;
+			grid-column: 1 / -1;
+			grid-template-columns: subgrid;
 
-		@media (max-width: 1200px) {
-			& > div:nth-child(n + 12) {
-				display: none;
+			@media (max-width: 1200px) {
+				& > div:nth-child(n + 12) {
+					display: none;
+				}
 			}
-		}
 
-		& > div {
-			/* max-width: 100px; */
-			padding: 0.5em 0.25em;
-			text-align: center;
-			border-bottom: 1px dotted #fff3;
-			border-right: 1px dotted #fff3;
-			place-content: center;
+			& > div {
+				/* max-width: 100px; */
+				padding: 0.5em 0.25em;
+				text-align: center;
+				border-bottom: 1px dotted #fff3;
+				border-right: 1px dotted #fff3;
+				place-content: center;
 
-			&[data-name] {
-				text-align: start;
+				&[data-name] {
+					text-align: start;
+				}
 			}
 		}
 	}
@@ -600,8 +602,9 @@
 			}
 
 			function fn_gen_grouped_hero(hero, index) {
+				let _props = fn_gen_hero_props(hero);
 				return `
-					<div class="grouped-hero" data-class-${hero.class}="${index}">
+					<div class="grouped-hero item" ${_props} data-class-${hero.class}="${index}">
 						<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"></a>
 						<div class=grouped-hero__name>
 							${hero.name}
@@ -609,6 +612,15 @@
 					</div>
 				`
 			}
+		}
+
+		function fn_gen_hero_props(hero) {
+			return props.map(p => {
+				if (p === 'slots') {
+					return ['slot1', 'slot2', 'slot3'].map(j => ` data-${j}="${hero[j]}"`).join('');
+				}
+				return ` data-${p}="${hero[p]}"`;
+			}).join('');
 		}
 
 		function fn_gen_list() {
@@ -619,12 +631,13 @@
 			) +
 			heros.map(hero => {
 				// let query = props.map(p => hero[p]).join();
-				let _props = props.map(p => {
-					if (p === 'slots') {
-						return ['slot1', 'slot2', 'slot3'].map(j => ` data-${j}="${hero[j]}"`).join('');
-					}
-					return ` data-${p}="${hero[p]}"`;
-				}).join('');
+				// let _props = props.map(p => {
+				// 	if (p === 'slots') {
+				// 		return ['slot1', 'slot2', 'slot3'].map(j => ` data-${j}="${hero[j]}"`).join('');
+				// 	}
+				// 	return ` data-${p}="${hero[p]}"`;
+				// }).join('');
+				let _props = fn_gen_hero_props(hero);
 				let orders_style = props.map(p => `--order-${p}: ${hero.order[p]};`).join(' ');
 				return (
 					`<li class="item" ${_props} style="${orders_style}">`
@@ -758,7 +771,7 @@
 			for (let prop in pairs) {
 				let sp_selector = (prop === 'traits') ? '*' : '';
 				selectors.push(
-					`.item:not(`+ pairs[prop].map(v => `[data-${prop}${sp_selector}="${v}"]`).join(',') +`)`
+					`.item.item:not(`+ pairs[prop].map(v => `[data-${prop}${sp_selector}="${v}"]`).join(',') +`)`
 				)
 			}
 
