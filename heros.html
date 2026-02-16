@@ -395,7 +395,7 @@
 		heros.forEach(hero => {
 			hero.order = {};
 			hero.traits = hero.traits.split(',');
-			props.map((prop, index) => {
+			props.forEach((prop, index) => {
 				let order_target = hero[prop];
 				hero.order[prop] = order_target;
 				if (Array.isArray(order_target)) {
@@ -415,25 +415,6 @@
 				}
 			});
 		});
-
-		let filter_cates = heros.reduce((all, hero) => {
-			filter_props.forEach(prop => {
-				if (!all[prop]) {
-					all[prop] = [];
-				}
-				all[prop].push(hero[prop]);
-			});
-			return all;
-		}, {});
-
-		for (let cate in filter_cates) {
-			if (cate === 'traits') {
-				filter_cates[cate] = [...new Set(filter_cates[cate].flat())].sort();
-			} else {
-				filter_cates[cate] = [...new Set(filter_cates[cate])].sort();
-			}
-		}
-		console.log(123, filter_cates);
 
 		el_filters.innerHTML = fn_gen_filterdom();
 
@@ -496,6 +477,25 @@
 		function fn_gen_filterdom(argument) {
 			let filter_html = ``;
 
+			let filter_cates = heros.reduce((all, hero) => {
+				filter_props.forEach(prop => {
+					if (!all[prop]) {
+						all[prop] = [];
+					}
+					all[prop].push(hero[prop]);
+				});
+				return all;
+			}, {});
+
+			for (let cate in filter_cates) {
+				if (cate === 'traits') {
+					filter_cates[cate] = [...new Set(filter_cates[cate].flat())].sort();
+				} else {
+					filter_cates[cate] = [...new Set(filter_cates[cate])].sort();
+				}
+			}
+			console.log(123, filter_cates);
+
 			function fn_gen_checkboxs(cate) {
 				let dd = filter_cates[cate].map(i => `
 					<dd>
@@ -542,6 +542,7 @@
 
 		el_form.addEventListener('input', fn_form_update);
 		el_form.addEventListener('reset', fn_update_style);
+		el_head?.addEventListener('click', fn_reorder_table);
 
 		function fn_form_update() {
 			let formData = new FormData(el_form);
@@ -577,7 +578,7 @@
 			el_filter_style.innerHTML = style || '';
 		}
 
-		el_head?.addEventListener('click', (e) => {
+		function fn_reorder_table(e) {
 			let dir = +(el_head.dataset.dir) || 1;
 			let index = e.target.closest('div')?.dataset.index;
 			if (!index) {
@@ -588,7 +589,8 @@
 			el_head.dataset.dir = dir * -1;
 
 			el_head_style.innerHTML = `li.item { order: calc(var(--order-${props[index]}, 0) * ${dir * -1}); }`;
-		});
+		}
+
 	</script>
 </body>
 </html>
