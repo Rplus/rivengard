@@ -94,10 +94,11 @@
 		font-size: smaller;
 		grid-template-columns: repeat(14, 1fr);
 		padding: .5em 1em;
-		margin-bottom: max(30vh, 20em);
+		margin-bottom: max(40vh, 20em);
 
 		@media (max-width: 1200px) {
 			grid-template-columns: repeat(11, 1fr);
+			margin-bottom: max(60vh, 20em);
 		}
 		@media (max-width: 860px) {
 			grid-template-columns: repeat(6, 1fr);
@@ -137,18 +138,31 @@
 
 	#el_list.is-grouped {
 		display: block;
+		min-width: 50vw;
+		max-width: 1200px;
 		width: fit-content;
 		margin: 0 auto 5em;
+		/* background-color: #fff1; */
 	}
 
 	.grouped-heros-cate {
 		margin-bottom: 2em;
-		width: fit-content;
+		/* width: fit-content; */
+
+		h3 {
+			margin-bottom: .25em;
+		}
 	}
 
 	.grouped-heros-box {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		background-color: #0003;
+		border-radius: 0 1em 1em 1em;
+
+		.grouped-heros-cate[data-cate="class"] & {
+			display: block;
+		}
 
 		body:has(#class-spliter:checked) & {
 			display: grid;
@@ -170,7 +184,6 @@
 		text-align: center;
 		font-size: smaller;
 		padding: .5em;
-		/* max-width: calc(64px +); */
 
 		img {
 			display: block;
@@ -190,6 +203,24 @@
 
 		.grouped-hero__name {
 			max-width: 64px;
+			line-height: 1.1;
+		}
+	}
+
+	.grouped-heros-classbox {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: start;
+		align-content: flex-start;
+		padding: 0.25em;
+		padding-top: .5em;
+		padding-bottom: 1em;
+		gap: .25em;
+		background-image:
+			linear-gradient(-115deg, #0001, #0000 30%),
+			linear-gradient(100deg, #9991, #0000 10%);
+
+		&:hover {
 		}
 	}
 
@@ -317,20 +348,10 @@
 		padding: .25em 2vw;
 		margin: 0 auto;
 	}
-	.el_switcher_box {
-		width: fit-content;
+	#el_switcher {
+		display: block;
+		text-transform: capitalize;
 		margin: 0 auto;
-
-		summary {
-			opacity: 0.3;
-		}
-
-		&:not([open]) {
-		}
-
-		#el_switcher {
-			text-transform: capitalize;
-		}
 	}
 </style>
 </head>
@@ -341,14 +362,7 @@
 
 	<h1>Hero List | Rivengard</h1>
 
-	<details class="el_switcher_box">
-		<summary>-------------------------</summary>
-		<div class="flex">
-			<input type="checkbox" id="class-spliter" title="separate by class">
-			⋮
-			<select id="el_switcher"></select>
-		</div>
-	</details>
+	<select id="el_switcher"></select>
 
 	<div id="app">
 
@@ -533,10 +547,11 @@
 			el_list.innerHTML = fn_gen_list();
 		} else {
 			el_list.classList.add('is-grouped');
-			document.querySelector('.el_switcher_box').open = true;
-			let heros_grouped = Object.groupBy(heros, (i) => {
-				return i[us_cate];
-			});
+			let heros_grouped = Object.groupBy(heros, (i) => i[us_cate]);
+			for (let cate in heros_grouped) {
+				heros_grouped[cate] = Object.groupBy(heros_grouped[cate], i => i.class);
+			}
+			// console.log(333, heros_grouped);
 			el_list.innerHTML = fn_gen_groupby(heros_grouped);
 		}
 
@@ -562,48 +577,26 @@
 		function fn_gen_groupby(heros_grouped) {
 			// console.log(22, heros_grouped);
 			let _html = '';
-			const each_class = ['Mage', 'Rogue', 'Warrior', ]
-			let each_class_maxcount = [0, 0, 0];
 
 			for (let cate in heros_grouped) {
-				let each_class_count = [0, 0, 0];
-				_html += `<div class="grouped-heros-cate">
+				let _hero_html = '';
+
+				for (let _class in heros_grouped[cate]) {
+					let _class_html = heros_grouped[cate][_class].map((hero) => {
+						return fn_gen_grouped_hero(hero);
+					}).join('');
+					_hero_html += `<div class="grouped-heros-classbox">${_class_html}</div>`;
+				}
+
+				_html += `<div class="grouped-heros-cate" data-cate="${us_cate}">
 					<h3>${cate}</h3>
 					<div class="grouped-heros-box">
-						${
-							heros_grouped[cate].map((hero) => {
-								let ci = each_class.indexOf(hero.class);
-								each_class_count[ci] += 1;
-								if (each_class_count[ci] > each_class_maxcount[ci]) {
-									each_class_maxcount[ci] = each_class_count[ci];
-								}
-								return fn_gen_grouped_hero(hero, each_class_count[ci]);
-							}).join('')
-						}
+						${_hero_html}
 					</div>
 				</div>`;
 			}
 
-			let style = fn_gen_grouped_hero_order_style(each_class_maxcount);
-
-			return _html + style;
-
-			function fn_gen_grouped_hero_order_style(each_class_maxcount) {
-
-				if (us_cate === 'class') {
-					return `<style>.grouped-heros-box { display: flex; }</style>`;
-				}
-
-				const each_class = ['mage', 'rogue', 'warrior', ];
-				let _style = '';
-				each_class_maxcount.map((count, index) => {
-					for (let i = 1; i <= count; i++) {
-						let _order = (index ? fn_sumarray(each_class_maxcount.slice(0, index)) : 0) + i;
-						_style += `.grouped-hero[data-class-${each_class[index]}="${i}"] { grid-column-start: ${_order};}`
-					}
-				});
-				return `<style>${_style} .grouped-heros-box { grid-template-columns: repeat(${fn_sumarray(each_class_maxcount)}, calc(64px + 1em));}</style>`;
-			}
+			return _html;
 
 			function fn_sumarray(array) {
 				return array.reduce((all, cur) => all + cur, 0);
@@ -612,7 +605,7 @@
 			function fn_gen_grouped_hero(hero, index) {
 				let _props = fn_gen_hero_props(hero);
 				return `
-					<div class="grouped-hero item" ${_props} data-class-${hero.class}="${index}">
+					<div class="grouped-hero item" ${_props}>
 						<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"></a>
 						<div class=grouped-hero__name>
 							${hero.name}
