@@ -494,12 +494,16 @@
 	    "Terrifying": "Takes 40% less melee damage"
 		};
 
+		String.prototype.sanitize = function() {
+			return this.replace(/[,\s\']/g, '_');
+		};
+
 		// init order number
 		// const WEIGHT = 70000; // for all unicode char
 		const WEIGHT = 100; // for [a-z0-9 ,.']
 		heros.forEach(hero => {
 			hero.order = {};
-			hero.traits = hero.traits.split(',');
+			hero.traits = hero.traits.replace('n/a', '').split(',');
 			props.forEach((prop, index) => {
 				let order_target = hero[prop];
 				hero.order[prop] = order_target;
@@ -621,9 +625,13 @@
 		function fn_gen_hero_props(hero) {
 			return props.map(p => {
 				if (p === 'slots') {
-					return ['slot1', 'slot2', 'slot3'].map(j => ` data-${j}="${hero[j]}"`).join('');
+					return ['slot1', 'slot2', 'slot3'].map(j => ` data-${j}_${hero[j]}`).join('');
+				} else if (p === 'traits') {
+					return hero[p]
+						.map(i => ` data-${p}_${i.sanitize()}`)
+						.join('');
 				}
-				return ` data-${p}="${hero[p]}"`;
+				return ` data-${p}_${(hero[p] + '').sanitize()}`;
 			}).join('');
 		}
 
@@ -708,7 +716,7 @@
 				let dd = filter_cates[cate].map(i => `
 					<dd>
 						<label class="filter-label flex">
-							<input type="checkbox" name="${cate}" value="${i}" id="filter-${cate}_${i}">
+							<input type="checkbox" name="${cate}" value="${(i + '').sanitize()}" id="filter-${cate}_${i}">
 							${i}
 						</label>
 					</dd>
@@ -773,9 +781,8 @@
 
 			let selectors = [];
 			for (let prop in pairs) {
-				let sp_selector = (prop === 'traits') ? '*' : '';
 				selectors.push(
-					`.item.item:not(`+ pairs[prop].map(v => `[data-${prop}${sp_selector}="${v}"]`).join(',') +`)`
+					`.item.item:not(`+ pairs[prop].map(v => `[data-${prop}_${v}]`).join(',') +`)`
 				)
 			}
 
