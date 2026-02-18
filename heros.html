@@ -551,7 +551,7 @@
 			for (let cate in heros_grouped) {
 				heros_grouped[cate] = Object.groupBy(heros_grouped[cate], i => i.class);
 			}
-			// console.log(333, heros_grouped);
+			console.log(333, heros_grouped);
 			el_list.innerHTML = fn_gen_groupby(heros_grouped);
 		}
 
@@ -577,14 +577,16 @@
 		function fn_gen_groupby(heros_grouped) {
 			// console.log(22, heros_grouped);
 			let _html = '';
+			let s_class = ['Mage', 'Rogue', 'Warrior'];
 
 			for (let cate in heros_grouped) {
 				let _hero_html = '';
 
-				for (let _class in heros_grouped[cate]) {
-					let _class_html = heros_grouped[cate][_class].map((hero) => {
+				for (let _class of s_class) {
+				// for (let _class in heros_grouped[cate]) {
+					let _class_html = heros_grouped[cate][_class]?.map((hero) => {
 						return fn_gen_grouped_hero(hero);
-					}).join('');
+					}).join('') || '';
 					_hero_html += `<div class="grouped-heros-classbox">${_class_html}</div>`;
 				}
 
