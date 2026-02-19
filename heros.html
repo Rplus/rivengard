@@ -549,21 +549,29 @@
 			});
 		});
 
-
-		let us = new URLSearchParams(location.search);
-		let us_cate = ( switcher_props.includes(us.get('cate')) && us.get('cate') ) || '';
+		let us_cate = fn_get_us_cate(location);
 
 		if (!us_cate) {
 			el_list.innerHTML = fn_gen_list();
 		} else {
+			init_grouped_hero(us_cate);
+		}
+
+		function fn_get_us_cate(url_obj = location) {
+			let _us = new URLSearchParams(url_obj.search);
+			let _us_cate = ( switcher_props.includes(_us.get('cate')) && _us.get('cate') );
+			return _us_cate || '';
+		}
+
+		function init_grouped_hero(_cate = switcher_props[0]) {
 			el_list.classList.add('is-grouped');
-			let heros_grouped = Object.groupBy(heros, (i) => i[us_cate]);
+			let heros_grouped = Object.groupBy(heros, (i) => i[_cate]);
 			for (let cate in heros_grouped) {
 				heros_grouped[cate] = Object.groupBy(heros_grouped[cate], i => i.class);
 			}
-			console.log(333, heros_grouped);
-			el_list.innerHTML = fn_gen_groupby(heros_grouped);
+			el_list.innerHTML = fn_gen_groupby(heros_grouped, _cate);
 		}
+
 
 		el_filters.innerHTML = fn_gen_filterdom();
 		fn_gen_switcher();
@@ -577,14 +585,22 @@
 				let _cate = e.target.value;
 				console.log(e.target.value);
 				if (_cate) {
-					location.href = `?cate=${_cate}`;
+					// location.href = `?cate=${_cate}`;
+					window.history.replaceState(null, '', `?cate=${_cate}`);
 				} else {
 					location.href = './heros.html';
 				}
 			});
+
+			if (window.navigation) {
+				navigation.addEventListener('navigate', (event) => {
+					let _us_cate = fn_get_us_cate(new URL(event.destination.url))
+					init_grouped_hero(_us_cate);
+				});
+			}
 		}
 
-		function fn_gen_groupby(heros_grouped) {
+		function fn_gen_groupby(heros_grouped, _cate) {
 			// console.log(22, heros_grouped);
 			let _html = '';
 			let s_class = ['Mage', 'Rogue', 'Warrior'];
@@ -600,7 +616,7 @@
 					_hero_html += `<div class="grouped-heros-classbox">${_class_html}</div>`;
 				}
 
-				_html += `<div class="grouped-heros-cate" data-cate="${us_cate}">
+				_html += `<div class="grouped-heros-cate" data-cate="${_cate}">
 					<h3>${cate}</h3>
 					<div class="grouped-heros-box">
 						${_hero_html}
@@ -754,7 +770,7 @@
 				}
 			}
 
-			el_form.querySelector(':scope > details').open = !us_cate;
+			// el_form.querySelector(':scope > details').open = !us_cate;
 
 			return filter_html;
 		}
