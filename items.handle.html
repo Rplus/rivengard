@@ -164,15 +164,30 @@
 		.filter:has(input[value="legendary"]:checked)	+ .table .tr:not(.is-sticky):not([data-q="legendary"]) {
 			display: none;
 		}
+		#goback {
+			position: absolute;
+			color: inherit;
+			top: 0;
+			left: 0;
+			width: 3em;
+			height: 3em;
+			display: flex;
+			padding: .25em;
+			background-image: linear-gradient(135deg, #fff3 50%, #0000 50%);
+
+			&:not(:hover) {
+				opacity: .5;
+			}
+		}
 	</style>
 	<script src="./items.data.js" defer></script>
 </head>
 
 <body>
+	<a href="./" id="goback" style="color: inherit;">./</a>
   <h1>
   	Items Drops | Rivengard
   	<wbr>
-  	<a href="./" style="color: inherit;">./</a>
   </h1>
   <div id="op"></div>
 </body>

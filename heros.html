@@ -363,12 +363,28 @@
 		text-transform: capitalize;
 		margin: 0 auto;
 	}
+
+	#goback {
+		position: absolute;
+		color: inherit;
+		top: 0;
+		left: 0;
+		width: 3em;
+		height: 3em;
+		display: flex;
+		padding: .25em;
+		background-image: linear-gradient(135deg, #fff3 50%, #0000 50%);
+
+		&:not(:hover) {
+			opacity: .5;
+		}
+	}
 </style>
 </head>
 
 <body>
 
-	<a href="./" style="color: inherit; position: absolute">./</a>
+	<a id="goback" href="./">./</a>
 
 	<h1>Hero List | Rivengard</h1>
 
