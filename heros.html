@@ -254,6 +254,10 @@
 				}
 			}
 
+			img:hover {
+				background-color: #fff1;
+			}
+
 			& > div {
 				/* max-width: 100px; */
 				padding: 0.5em 0.25em;
@@ -581,6 +585,7 @@
 
 		function init_grouped_hero(_cate = switcher_props[0]) {
 			el_list.classList.add('is-grouped');
+			el_switcher.value = _cate;
 			let heros_grouped = Object.groupBy(heros, (i) => i[_cate]);
 			for (let cate in heros_grouped) {
 				heros_grouped[cate] = Object.groupBy(heros_grouped[cate], i => i.class);
@@ -602,7 +607,7 @@
 				console.log(e.target.value);
 				if (_cate) {
 					// location.href = `?cate=${_cate}`;
-					window.history.replaceState(null, '', `?cate=${_cate}`);
+					window.history.pushState(null, '', `?cate=${_cate}`);
 				} else {
 					location.href = './heros.html';
 				}
@@ -610,8 +615,15 @@
 
 			if (window.navigation) {
 				navigation.addEventListener('navigate', (event) => {
-					let _us_cate = fn_get_us_cate(new URL(event.destination.url))
-					init_grouped_hero(_us_cate);
+					if (!event.destination.sameDocument) {
+						return;
+					}
+					let _us_cate = fn_get_us_cate(new URL(event.destination.url));
+					if (_us_cate) {
+						init_grouped_hero(_us_cate);
+					} else {
+						location.href = './heros.html';
+					}
 				});
 			}
 		}
