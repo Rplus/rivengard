@@ -180,6 +180,7 @@
 	}
 
 	.grouped-hero {
+		position: relative;
 		display: block;
 		text-align: center;
 		font-size: smaller;
@@ -207,6 +208,31 @@
 			justify-content: center;
 			line-height: 1.1;
 			white-space: nowrap;
+		}
+
+		.grouped-hero__details-btn {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: inline-flex;
+			width: 2em;
+			height: 2em;
+			background-color: #fff3;
+			border-width: 0;
+			justify-content: end;
+			align-items: start;
+			cursor: pointer;
+			padding: 0px 4px;
+			clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+			opacity: 0;
+		}
+
+		&:hover .grouped-hero__details-btn {
+			opacity: .5;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 
@@ -383,6 +409,20 @@
 			opacity: .5;
 		}
 	}
+
+	#dialog {
+		text-transform: capitalize;
+
+		button {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+
+		tr:hover {
+			background-color: #fff3;
+		}
+	}
 </style>
 </head>
 
@@ -416,6 +456,10 @@
 		</form>
 
 		<ul id="el_list"></ul>
+		<dialog id="dialog">
+			<div id="dialog_ctx"></div>
+			<button onclick="fn_toggle_dialog(false)">✖</button>
+		</dialog>
 	</div>
 
 	<script src="./heros.js"></script>
@@ -663,7 +707,8 @@
 				return `
 					<div class="grouped-hero item" ${_props}>
 						<a href="${hero.link}" target="_blank"><img src="./imgs/${hero.img}" width="64" height="64"></a>
-						<div class=grouped-hero__name>
+						<button class="grouped-hero__details-btn" onclick="fn_toggle_dialog(true, '${hero.name}')">+</button>
+						<div class="grouped-hero__name">
 							${hero.name}
 						</div>
 					</div>
@@ -857,6 +902,50 @@
 			el_head_style.innerHTML = `li.item { order: calc(var(--order-${props[index]}, 0) * ${dir * -1}); }`;
 		}
 
+		function fn_toggle_dialog(isOpen = true, heroname = '') {
+			if (!isOpen) {
+				dialog.close();
+				dialog_ctx.innerHTML = '';
+				return;
+			}
+
+			let hero = heros.find(i => i.name === heroname);
+			if (!hero) { return; }
+
+			dialog_ctx.innerHTML = fn_gen_hero_detail(hero);
+			dialog.showModal();
+		}
+
+		function fn_gen_hero_detail(hero) {
+			return `<table>` +
+				`<tr><td colspan="2" align="center"><img src="./imgs/${hero.img}"></td></tr>` +
+				props.map(prop => {
+					if (prop === 'traits') {
+						return `<tr><td>${prop}</td><td>🧬 ${hero[prop].join('<br>🧬 ')}</td></tr>`;
+					} else if (prop === 'slots') {
+						return `<tr><td>${prop}</td>
+							<td>
+								⚙️ ${hero.slot1}<br>
+								⚙️ ${hero.slot2}<br>
+								⚙️ ${hero.slot3}
+							</td>
+						</tr>`;
+					} else {
+						return `<tr><td>${prop}</td><td>${hero[prop]}</td></tr>`;
+					}
+				}).join('') +
+				`</table>`;
+		}
+
+		dialog.addEventListener('click', (e) => {
+			if (e.target === dialog) dialog.close();
+		});
+
 	</script>
 </body>
 </html>
+
+<div>
+	<img src="" alt="">
+
+</div>
