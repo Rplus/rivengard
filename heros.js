@@ -554,7 +554,7 @@ window.heros = [
     {
         "name": "Sir Matteus",
         "link": "https://rivengard.fandom.com/wiki/Sir_Matteus",
-        "img": "Matteus.webp",
+        "img": "SirMatteus.webp",
         "rarity": "Common",
         "affinity": "Light",
         "class": "Warrior",
@@ -761,7 +761,7 @@ window.heros = [
     {
         "name": "Sir Florianus",
         "link": "https://rivengard.fandom.com/wiki/Sir_Florianus",
-        "img": "Florianus.webp",
+        "img": "SirFlorianus.webp",
         "rarity": "Common",
         "affinity": "Green",
         "class": "Warrior",
@@ -1037,7 +1037,7 @@ window.heros = [
     {
         "name": "Buzzy Klonkson",
         "link": "https://rivengard.fandom.com/wiki/Buzzy_Klonkson",
-        "img": "Polish_20220525_162737370.webp",
+        "img": "Buzzy_Klonkson.webp",
         "rarity": "Uncommon",
         "affinity": "Red",
         "class": "Warrior",
@@ -1060,7 +1060,7 @@ window.heros = [
     {
         "name": "Snazzbang",
         "link": "https://rivengard.fandom.com/wiki/Snazzbang",
-        "img": "Snazzbang_Transparent.webp",
+        "img": "Snazzbang.webp",
         "rarity": "Uncommon",
         "affinity": "Red",
         "class": "Rogue",
@@ -1083,7 +1083,7 @@ window.heros = [
     {
         "name": "Sprocket",
         "link": "https://rivengard.fandom.com/wiki/Sprocket",
-        "img": "Screenshot_20220524-101132_Rivengard.webp",
+        "img": "Sprocket.webp",
         "rarity": "Uncommon",
         "affinity": "Red",
         "class": "Rogue",
@@ -1129,7 +1129,7 @@ window.heros = [
     {
         "name": "Wingtip",
         "link": "https://rivengard.fandom.com/wiki/Wingtip",
-        "img": "Polish_20220621_220939307.webp",
+        "img": "Wingtip.webp",
         "rarity": "Uncommon",
         "affinity": "Red",
         "class": "Warrior",

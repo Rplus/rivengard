@@ -414,6 +414,10 @@
 	#dialog {
 		text-transform: capitalize;
 
+		img {
+			object-fit: contain;
+		}
+
 		button {
 			position: absolute;
 			right: 0;
@@ -903,8 +907,8 @@
 			el_head_style.innerHTML = `li.item { order: calc(var(--order-${props[index]}, 0) * ${dir * -1}); }`;
 		}
 
-		function fn_toggle_dialog(isOpen = true, heroname = '') {
-			if (!isOpen) {
+		function fn_toggle_dialog(is_open = true, heroname = '') {
+			if (!is_open) {
 				dialog.close();
 				dialog_ctx.innerHTML = '';
 				return;
@@ -919,7 +923,7 @@
 
 		function fn_gen_hero_detail(hero) {
 			return `<table>` +
-				`<tr><td colspan="2" align="center"><img src="./imgs/${hero.img}"></td></tr>` +
+				`<tr><td colspan="2" align="center"><img src="./imgs/${hero.img}" width="64" height="64"></td></tr>` +
 				props.map(prop => {
 					if (prop === 'traits') {
 						return `<tr><td>${prop}</td><td>🧬 ${hero[prop].join('<br>🧬 ')}</td></tr>`;
