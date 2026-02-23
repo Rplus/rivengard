@@ -926,7 +926,11 @@
 				`<tr><td colspan="2" align="center"><img src="./imgs/${hero.img}" width="64" height="64"></td></tr>` +
 				props.map(prop => {
 					if (prop === 'traits') {
-						return `<tr><td>${prop}</td><td>🧬 ${hero[prop].join('<br>🧬 ')}</td></tr>`;
+						let _items = hero[prop].map(i => `<div title="${all_traits[i] || i}">🧬 ${i}<div>`).join('');
+						return `<tr>
+							<td>${prop}</td>
+							<td>${_items}</td>
+						</tr>`;
 					} else if (prop === 'slots') {
 						return `<tr><td>${prop}</td>
 							<td>
