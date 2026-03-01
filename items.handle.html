@@ -43,6 +43,7 @@
 
 			@media (max-width: 960px) {
 				grid-template-columns: repeat(10, 1fr);
+				font-size: small;
 
 				.tr {
 					margin-bottom: 1em;
@@ -58,13 +59,18 @@
 				}
 				.td:nth-of-type(n + 5) {
 					background-color: #fff1;
+					padding: 1px 2px;
+					font-size: 10px;
+					letter-spacing: -0.5px;
+					text-align: center;
+					white-space: nowrap;
 				}
 				.td {
 					min-height: 1em;
 				}
 			}
 
-			@media (max-width: 600px) {
+			@media (max-width: 300px) {
 				grid-template-columns: repeat(5, auto);
 
 				.td:nth-of-type(2) { grid-column: span 3; }
@@ -118,6 +124,7 @@
 			border: 1px solid #ccc3;
 			border-width: 0 1px 1px 0;
 			place-content: center;
+			font-size: smaller;
 
 			&:first-child {
 				border-left-width: 1px;
@@ -127,6 +134,8 @@
 		img {
 			width: 72px;
 			height: 72px;
+			max-width: 15vw;
+			object-fit: contain;
 		}
 
 		textarea {
